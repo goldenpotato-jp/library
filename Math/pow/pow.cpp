@@ -1,6 +1,7 @@
 // pow
-ll pow(ll x,ll n){
-    ll r=1;
+template<typename T>
+T pow(ll x,T n){
+    T r=1;
     while(n){
         if(n&1)r*=x;
         x*=x;
