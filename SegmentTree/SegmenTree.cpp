@@ -6,7 +6,7 @@ struct SegmentTree{
     vector<T>seg;
     SegmentTree(int len):o(len){
         while(n<len)n<<=1;
-        seg.assign(n<<1,M::e);
+        seg.assign(n<<1,M::e());
     }SegmentTree(const vector<T>&v):o(v.size()){
         while(n<o)n<<=1;
         seg.resize(n<<1);
@@ -16,7 +16,7 @@ struct SegmentTree{
         seg[i+=n]=x;
         while(i>>=1)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }T get(int l,int r){
-        T L=M::e,R=M::e;
+        T L=M::e(),R=M::e();
         for(l+=n,r+=n+1;l<r;l>>=1,r>>=1){
             if(l&1)L=M::op(L,seg[l++]);
             if(r&1)R=M::op(seg[--r],R);
@@ -24,7 +24,7 @@ struct SegmentTree{
     }template<class F>
     int max_right(int l,F f){
         l+=n;
-        T sum=M::e;
+        T sum=M::e();
         do{
             while(!(l&1))l>>=1;
             if(!f(M::op(sum,seg[l]))){
@@ -36,7 +36,7 @@ struct SegmentTree{
     }template<class F>
     int min_left(int r,F f){
         r+=n+1;
-        T sum=M::e;
+        T sum=M::e();
         do{
             r--;
             while(r>1&&r&1)r>>=1;

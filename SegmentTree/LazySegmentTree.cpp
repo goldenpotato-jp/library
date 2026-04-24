@@ -8,11 +8,11 @@ struct LazySegmentTree{
     vector<F>lazy;
     LazySegmentTree(int len):o(len){
         while(n<len)n<<=1;
-        seg.assign(n<<1,M::e);
+        seg.assign(n<<1,M::e());
         lazy.assign(n<<1,M::id);
     }LazySegmentTree(const vector<S>&v):o(v.size()){
         while(n<o)n<<=1;
-        seg.assign(n<<1,M::e);
+        seg.assign(n<<1,M::e());
         lazy.assign(n<<1,M::id);
         rep(i,o)seg[i+n]=v[i];
         for(int i=n-1;i>0;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
@@ -39,7 +39,7 @@ struct LazySegmentTree{
     }S get(int l,int r){
         return get(l,r,1,0,n-1);
     }S get(int ql,int qr,int i,int l,int r){
-        if(r<ql||qr<l)return M::e;
+        if(r<ql||qr<l)return M::e();
         if(ql<=l&&r<=qr)return seg[i];
         push(i);
         int mid=(l+r)>>1;
