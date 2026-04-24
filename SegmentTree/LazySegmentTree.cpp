@@ -6,8 +6,8 @@ struct LazySegmentTree{
     int n=1,o;
     vector<S>seg;
     vector<F>lazy;
-    LazySegmentTree(int len):o(len){
-        while(n<len)n<<=1;
+    LazySegmentTree(int n_=0):o(n_){
+        while(n<n_)n<<=1;
         seg.assign(n<<1,M::e());
         lazy.assign(n<<1,M::id);
     }LazySegmentTree(const vector<S>&v):o(v.size()){
@@ -46,5 +46,7 @@ struct LazySegmentTree{
         return M::op(get(ql,qr,i<<1,l,mid),get(ql,qr,i<<1|1,mid+1,r));
     }S operator[](int i){
         return get(i,i);
+    }int size()const{
+        return o;
     }
 };

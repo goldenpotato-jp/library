@@ -4,12 +4,12 @@ struct SegmentTree{
     using T=typename M::T;
     int n=1,o;
     vector<T>seg;
-    SegmentTree(int len):o(len){
-        while(n<len)n<<=1;
+    SegmentTree(int n_=0):o(n_){
+        while(n<n_)n<<=1;
         seg.assign(n<<1,M::e());
     }SegmentTree(const vector<T>&v):o(v.size()){
         while(n<o)n<<=1;
-        seg.resize(n<<1);
+        seg.assign(n<<1,M::e());
         rep(i,o)seg[i+n]=v[i];
         for(int i=n-1;i>0;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }void set(int i,T x){
@@ -48,5 +48,7 @@ struct SegmentTree{
         return 0;
     }T operator[](int i){
         return seg[i+n];
+    }int size()const{
+        return o;
     }
 };
