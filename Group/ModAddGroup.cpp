@@ -1,7 +1,7 @@
 // ModAddGroup
 struct ModAddGroup{
     using T=ll;
-    static constexpr T mod=998244353;
+    static constexpr ll mod=998244353;
     static T e(){
         return 0;
     }static T op(T a,T b){

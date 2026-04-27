@@ -9,21 +9,21 @@ struct LazySegmentTree{
     LazySegmentTree(int n_=0):o(n_){
         while(n<n_)n<<=1;
         seg.assign(n<<1,M::e());
-        lazy.assign(n<<1,M::id);
+        lazy.assign(n<<1,M::id());
     }LazySegmentTree(const vector<S>&v):o(v.size()){
         while(n<o)n<<=1;
         seg.assign(n<<1,M::e());
-        lazy.assign(n<<1,M::id);
+        lazy.assign(n<<1,M::id());
         rep(i,o)seg[i+n]=v[i];
         for(int i=n-1;i>0;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }void apply(int i,F f){
         seg[i]=M::mapping(f,seg[i]);
-        if(i<n)lazy[i]=M::conposition(f,lazy[i]);
+        if(i<n)lazy[i]=M::composition(f,lazy[i]);
     }void push(int i){
-        if(lazy[i]==M::id)return;
+        if(lazy[i]==M::id())return;
         apply(i<<1,lazy[i]);
         apply(i<<1|1,lazy[i]);
-        lazy[i]=M::id;
+        lazy[i]=M::id();
     }void set(int l,int r,F f){
         set(l,r,f,1,0,n-1);
     }void set(int ql,int qr,F f,int i,int l,int r){
