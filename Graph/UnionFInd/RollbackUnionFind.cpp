@@ -19,8 +19,7 @@ struct RollbackUnionFind{
     }void rollback(){
         auto[i2,v2]=h.top();h.pop();
         auto[i1,v1]=h.top();h.pop();
-        if(i2==-1)return;
-        p[i1]=v1,p[i2]=v2;
+        if(i2!=-1)p[i1]=v1,p[i2]=v2;
     }void rollback(int snap){
         while(h.size()>>1>snap)rollback();
     }bool same(int x,int y){
@@ -29,5 +28,7 @@ struct RollbackUnionFind{
         return-p[find(x)];
     }int snapshot(){
         return h.size()>>1;
+    }int size()const{
+        return p.size();
     }
 };

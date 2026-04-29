@@ -4,7 +4,7 @@ struct WeightedUnionFind{
     using T=typename G::T;
     vector<int>p;
     vector<T>d;
-    WeightedUnionFind(int n):p(n,-1),d(n,G::e){}
+    WeightedUnionFind(int n):p(n,-1),d(n,G::e()){}
     int find(int x){
         if(p[x]<0)return x;
         int r=find(p[x]);
@@ -29,5 +29,7 @@ struct WeightedUnionFind{
         return-p[find(x)];
     }T diff(int x,int y){
         return G::op(weight(y),G::inv(weight(x)));
+    }int size()const{
+        return p.size();
     }
 };
