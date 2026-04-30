@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 using ll=long long;
+using ull=unsigned long long;
 using ld=long double;
 #define all(a)a.begin(),a.end()
 #define rall(a)a.rbegin(),a.rend()
