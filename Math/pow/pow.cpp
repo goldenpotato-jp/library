@@ -1,6 +1,6 @@
 // pow
 template<typename T>
-T pow(ll x,T n){
+T pow(T x,ll n){
     T r=1;
     while(n){
         if(n&1)r*=x;

@@ -13,5 +13,5 @@ constexpr ll INF=2e18;
 int main(){
     cin.tie(0)->sync_with_stdio(0);
     cout<<fixed<<setprecision(0);
-
+    
 }
