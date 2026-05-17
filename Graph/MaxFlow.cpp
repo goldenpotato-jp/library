@@ -4,7 +4,7 @@ struct MaxFlow{
     vector<int>level,iter;
     vector<tuple<ll,ll,ll>>edges;
     vector<vector<tuple<int,ll,int>>>g;
-    Dinic(int n):n(n),g(n),level(n),iter(n){}
+    MaxFlow(int n):n(n),g(n),level(n),iter(n){}
     int add_edge(int from,int to,ll cap){
         ll idx=g[from].size();
         g[from].emplace_back(to,cap,g[to].size());
