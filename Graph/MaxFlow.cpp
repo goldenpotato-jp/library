@@ -1,5 +1,5 @@
-// Dinic
-struct Dinic{
+// MaxFlow
+struct MaxFlow{
     int n;
     vector<int>level,iter;
     vector<tuple<ll,ll,ll>>edges;
