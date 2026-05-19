@@ -1,6 +1,7 @@
 // AddGroup
-template<typename T>
+template<typename S>
 struct AddGroup{
+    using T=S;
     static T e(){
         return 0;
     }static T op(T a,T b){
