@@ -1,8 +1,8 @@
-// Combination
-struct Combination{
+// ModCombination
+struct ModCombination{
     ll mod;
     vector<ll>fact,inv,fact_inv;
-    Combination(int n,ll mod_=998244353):mod(mod_),fact(n+1),inv(n+1),fact_inv(n+1){
+    ModCombination(int n,ll mod_=998244353):mod(mod_),fact(n+1),inv(n+1),fact_inv(n+1){
         fact[0]=inv[1]=fact_inv[0]=1;
         for(int i=1;i<=n;++i)fact[i]=fact[i-1]*i%mod;
         for(int i=2;i<=n;++i)inv[i]=mod-mod/i*inv[mod%i]%mod;
