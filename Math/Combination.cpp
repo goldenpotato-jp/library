@@ -8,6 +8,7 @@ struct Combination{
         for(int i=2;i<=n;++i)inv[i]=mod-mod/i*inv[mod%i]%mod;
         for(int i=1;i<=n;++i)fact_inv[i]=fact_inv[i-1]*inv[i]%mod;
     }ll operator()(int n,int r)const{
+        if(n<r||n<0||r<0)return 0;
         return fact[n]*fact_inv[r]%mod*fact_inv[n-r]%mod;
     }
 };
