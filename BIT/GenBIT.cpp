@@ -13,7 +13,7 @@ struct GenBIT{
         T s=G::e();
         for(++i;i>0;i-=i&-i)s=G::op(s,bit[i]);
         return s;
-    }T query(int l,int r)const{
+    }T get(int l,int r)const{
         return G::op(sum(r),G::inv(sum(l-1)));
     }T operator[](int i)const{
         return G::op(sum(i),G::inv(sum(i-1)));

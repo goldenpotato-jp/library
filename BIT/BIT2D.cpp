@@ -11,7 +11,7 @@ struct BIT2D{
         ll s=0;
         for(++i;i>0;i-=i&-i)for(int y=j+1;y>0;y-=y&-y)s+=bit[i][y];
         return s;
-    }ll query(int i1,int j1,int i2,int j2)const{
+    }ll get(int i1,int j1,int i2,int j2)const{
         return sum(i2,j2)-sum(i2,j1-1)-sum(i1-1,j2)+sum(i1-1,j1-1);
     }ll get(int i,int j)const{
         return query(i,j,i,j);

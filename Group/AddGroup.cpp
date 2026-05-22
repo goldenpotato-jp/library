@@ -1,5 +1,5 @@
 // AddGroup
-template<typename S>
+template<typename S=ll>
 struct AddGroup{
     using T=S;
     static T e(){

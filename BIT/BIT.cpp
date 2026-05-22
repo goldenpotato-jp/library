@@ -11,7 +11,7 @@ struct BIT{
         ll s=0;
         for(++i;i>0;i-=i&-i)s+=bit[i];
         return s;
-    }ll query(int l,int r)const{
+    }ll get(int l,int r)const{
         return sum(r)-sum(l-1);
     }int lower_bound(ll w)const{
         int x=0,r=1;

@@ -2,15 +2,15 @@
 template<class M>
 struct SegmentTree{
     using T=typename M::T;
-    int n=1,o;
+    int N,n=1;
     vector<T>seg;
-    SegmentTree(int n_=0):o(n_){
-        while(n<n_)n<<=1;
+    SegmentTree(int n_=0):N(n_){
+        while(n<N)n<<=1;
         seg.assign(n<<1,M::e());
-    }SegmentTree(const vector<T>&v):o(v.size()){
-        while(n<o)n<<=1;
+    }SegmentTree(const vector<T>&v):N(v.size()){
+        while(n<N)n<<=1;
         seg.assign(n<<1,M::e());
-        rep(i,o)seg[i+n]=v[i];
+        rep(i,N)seg[i+n]=v[i];
         for(int i=n-1;i>0;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }void set(int i,T x){
         seg[i+=n]=x;
@@ -32,7 +32,7 @@ struct SegmentTree{
                 return l-n-1;
             }sum=M::op(sum,seg[l++]);
         }while((l&-l)!=l);
-        return o-1;
+        return N-1;
     }template<class F>
     int min_left(int r,F f)const{
         r+=n+1;
@@ -49,6 +49,6 @@ struct SegmentTree{
     }T operator[](int i)const{
         return seg[i+n];
     }int size()const{
-        return o;
+        return N;
     }
 };

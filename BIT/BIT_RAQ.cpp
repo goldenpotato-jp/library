@@ -20,7 +20,7 @@ struct BIT_RAQ{
         return s;
     }ll sum(int i)const{
         return sum_sub(0,i)+sum_sub(1,i)*i;
-    }ll query(int l,int r)const{
+    }ll get(int l,int r)const{
         return sum(r)-sum(l-1);
     }ll operator[](int i)const{
         return sum(i)-sum(i-1);

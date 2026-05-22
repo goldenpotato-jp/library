@@ -1,6 +1,7 @@
 // PrefixSumMax
+template<typename S=ll>
 struct PrefixSumMax{
-    using T=pair<int,ll>;
+    using T=pair<int,S>;
     static T e(){
         return{0,-INF};
     }static T op(T a,T b){

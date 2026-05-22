@@ -3,18 +3,18 @@ template<class M>
 struct LazySegmentTree{
     using S=typename M::S;
     using F=typename M::F;
-    int n=1,o;
+    int N,n=1;
     vector<S>seg;
     vector<F>lazy;
-    LazySegmentTree(int n_=0):o(n_){
-        while(n<n_)n<<=1;
+    LazySegmentTree(int n_=0):N(n_){
+        while(n<N)n<<=1;
         seg.assign(n<<1,M::e());
         lazy.assign(n<<1,M::id());
-    }LazySegmentTree(const vector<S>&v):o(v.size()){
-        while(n<o)n<<=1;
+    }LazySegmentTree(const vector<S>&v):N(v.size()){
+        while(n<N)n<<=1;
         seg.assign(n<<1,M::e());
         lazy.assign(n<<1,M::id());
-        rep(i,o)seg[i+n]=v[i];
+        rep(i,N)seg[i+n]=v[i];
         for(int i=n-1;i>0;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }void apply(int i,F f){
         seg[i]=M::mapping(f,seg[i]);
@@ -47,6 +47,6 @@ struct LazySegmentTree{
     }S operator[](int i){
         return get(i,i);
     }int size()const{
-        return o;
+        return N;
     }
 };

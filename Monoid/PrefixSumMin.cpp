@@ -1,6 +1,7 @@
 // PrefixSumMin
+template<typename T=ll>
 struct PrefixSumMin{
-    using T=pair<int,ll>;
+    using T=pair<int,S>;
     static T e(){
         return{0,INF};
     }static T op(T a,T b){
