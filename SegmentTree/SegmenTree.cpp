@@ -35,16 +35,15 @@ struct SegmentTree{
         return N-1;
     }template<class F>
     int min_left(int r,F f)const{
-        r+=n+1;
+        r+=n;
         T sum=M::e();
         do{
-            r--;
             while(r>1&&r&1)r>>=1;
             if(!f(M::op(seg[r],sum))){
                 while(r<n)if(f(M::op(seg[r=r<<1|1],sum)))sum=M::op(seg[r--],sum);
                 return r-n+1;
             }sum=M::op(seg[r],sum);
-        }while((r&-r)!=r);
+        }while((r&-r)!=r--);
         return 0;
     }T operator[](int i)const{
         return seg[i+n];
