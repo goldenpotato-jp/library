@@ -1,6 +1,6 @@
 // RangeAffineSum
 struct RangeAffineSum{
-    using S=pair<ll,ll>;
+    using S=pair<ll,int>;
     using F=pair<ll,ll>;
     static constexpr ll mod=998244353;
     static S e(){
@@ -8,7 +8,7 @@ struct RangeAffineSum{
     }static F id(){
         return{1,0};
     }static S op(S a,S b){
-        return{(a.first+b.first)%mod,a.second+b.second};
+        return{a.first+b.first<mod?a.first+b.first:a.first+b.first-mod,a.second+b.second};
     }static S mapping(F f,S x){
         return{(x.first*f.first+f.second*x.second)%mod,x.second};
     }static F composition(F f,F g){
