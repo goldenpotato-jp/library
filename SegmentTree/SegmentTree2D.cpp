@@ -31,7 +31,7 @@ struct SegmentTree2D{
         }return res;
     }T get(int i1,int j1,int i2,int j2)const{
         T res=M::e();
-        i1+=h,j1+=w,i2+=h,j2+=w;
+        i1+=h,j1+=w,i2+=h+1,j2+=w+1;
         for(;i1<i2;i1>>=1,i2>>=1){
             if(i1&1)res=M::op(res,query(i1++,j1,j2));
             if(i2&1)res=M::op(query(--i2,j1,j2),res);
