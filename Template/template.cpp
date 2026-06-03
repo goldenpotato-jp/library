@@ -10,7 +10,7 @@ using ld=long double;
 #define uni(a)sort(all(a)),a.erase(unique(all(a)),a.end())
 template<typename T>void chmin(T&a,T b){if(a>b)a=b;}
 template<typename T>void chmax(T&a,T b){if(a<b)a=b;}
-constexpr int inf=2e9;
+constexpr int inf=2e9,dx4[4]={0,-1,0,1},dy4[4]={1,0,-1,0},dx8[8]={0,-1,-1,-1,0,1,1,1},dy8[8]={1,1,0,-1,-1,-1,0,1};
 constexpr ll INF=2e18;
 
 int main(){
