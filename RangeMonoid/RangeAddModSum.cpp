@@ -1,5 +1,5 @@
-// RangeAddModsum
-struct RangeAddModsum{
+// RangeAddModSum
+struct RangeAddModSum{
     using S=ll;
     using F=ll;
     static constexpr ll mod=998244353;
