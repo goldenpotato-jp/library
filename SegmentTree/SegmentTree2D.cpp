@@ -4,7 +4,7 @@ struct SegmentTree2D{
     using T=typename M::T;
     int H,W,h=1,w=1;
     vector<T>seg;
-    int id(int i,int j)const{
+    int id(int i,int j){
         return (i*w<<1)+j;
     }SegmentTree2D(int h_=0,int w_=0):H(h_),W(w_){
         while(h<H)h<<=1;
@@ -23,24 +23,24 @@ struct SegmentTree2D{
         seg[id(i+=h,j+=w)]=x;
         for(int x=i>>1;x;x>>=1)seg[id(x,j)]=M::op(seg[id(x<<1,j)],seg[id(x<<1|1,j)]);
         for(;i;i>>=1)for(int y=j>>1;y;y>>=1)seg[id(i,y)]=M::op(seg[id(i,y<<1)],seg[id(i,y<<1|1)]);
-    }T query(int i,int j1,int j2)const{
+    }T query(int i,int j1,int j2){
         T res=M::e();
         for(;j1<j2;j1>>=1,j2>>=1){
             if(j1&1)res=M::op(res,seg[id(i,j1++)]);
             if(j2&1)res=M::op(seg[id(i,--j2)],res);
         }return res;
-    }T get(int i1,int j1,int i2,int j2)const{
+    }T get(int i1,int j1,int i2,int j2){
         T res=M::e();
         i1+=h,j1+=w,i2+=h+1,j2+=w+1;
         for(;i1<i2;i1>>=1,i2>>=1){
             if(i1&1)res=M::op(res,query(i1++,j1,j2));
             if(i2&1)res=M::op(query(--i2,j1,j2),res);
         }return res;
-    }T operator()(int i,int j)const{
+    }T operator()(int i,int j){
         return seg[id(i+h,j+w)];
-    }int size_h()const{
+    }int size_h(){
         return H;
-    }int size_w()const{
+    }int size_w(){
         return W;
     }
 };

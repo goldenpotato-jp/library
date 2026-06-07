@@ -9,7 +9,7 @@ struct Mo{
         left.emplace_back(l);
         right.emplace_back(r+1);
     }template<typename AL,typename AR,typename DL,typename DR,typename REM>
-    void run(const AL&add_left,const AR&add_right,const DL&delete_left,const DR&delete_right,const REM&rem){
+    void run(AL&add_left,AR&add_right,DL&delete_left,DR&delete_right,REM&rem){
         sort(all(order),[&](int a,int b){
             int ablock=left[a]/width,bblock=left[b]/width;
             if(ablock!=bblock)return ablock<bblock;

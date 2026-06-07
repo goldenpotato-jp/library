@@ -6,7 +6,7 @@ struct Combination{
             dp[i][0]=1;
             for(int j=1;j<=i;++j)dp[i][j]=(dp[i-1][j-1]+dp[i-1][j])%mod;
         }
-    }ll operator()(int n,int r)const{
+    }ll operator()(int n,int r){
         if(n<0||r<0)return 0;
         return dp[n][r];
     }

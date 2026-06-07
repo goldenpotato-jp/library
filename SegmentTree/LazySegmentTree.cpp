@@ -46,7 +46,7 @@ struct LazySegmentTree{
         return M::op(get(ql,qr,i<<1,l,mid),get(ql,qr,i<<1|1,mid+1,r));
     }S operator[](int i){
         return get(i,i);
-    }int size()const{
+    }int size(){
         return N;
     }
 };

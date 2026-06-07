@@ -14,17 +14,17 @@ struct BIT_RAQ{
         add_sub(0,r+1,x*r);
         add_sub(1,l,x);
         add_sub(1,r+1,-x);
-    }ll sum_sub(int p,int i)const{
+    }ll sum_sub(int p,int i){
         ll s=0;
         for(++i;i>0;i-=i&-i)s+=bit[p][i];
         return s;
-    }ll sum(int i)const{
+    }ll sum(int i){
         return sum_sub(0,i)+sum_sub(1,i)*i;
-    }ll get(int l,int r)const{
+    }ll get(int l,int r){
         return sum(r)-sum(l-1);
-    }ll operator[](int i)const{
+    }ll operator[](int i){
         return sum(i)-sum(i-1);
-    }int size()const{
+    }int size(){
         return n-1;
     }
 };

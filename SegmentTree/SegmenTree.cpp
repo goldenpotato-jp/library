@@ -15,14 +15,14 @@ struct SegmentTree{
     }void set(int i,T x){
         seg[i+=n]=x;
         while(i>>=1)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
-    }T get(int l,int r)const{
+    }T get(int l,int r){
         T L=M::e(),R=M::e();
         for(l+=n,r+=n+1;l<r;l>>=1,r>>=1){
             if(l&1)L=M::op(L,seg[l++]);
             if(r&1)R=M::op(seg[--r],R);
         }return M::op(L,R);
     }template<class F>
-    int max_right(int l,F f)const{
+    int max_right(int l,F f){
         l+=n;
         T sum=M::e();
         do{
@@ -34,7 +34,7 @@ struct SegmentTree{
         }while((l&-l)!=l);
         return N-1;
     }template<class F>
-    int min_left(int r,F f)const{
+    int min_left(int r,F f){
         r+=n;
         T sum=M::e();
         do{
@@ -45,9 +45,9 @@ struct SegmentTree{
             }sum=M::op(seg[r],sum);
         }while((r&-r)!=r--);
         return 0;
-    }T operator[](int i)const{
+    }T operator[](int i){
         return seg[i+n];
-    }int size()const{
+    }int size(){
         return N;
     }
 };
