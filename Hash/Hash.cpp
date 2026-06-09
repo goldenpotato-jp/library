@@ -8,9 +8,9 @@ struct Hash{
     }static ull rng(){
         static ull FIXED_RANDOM=chrono::steady_clock::now().time_since_epoch().count();
         return FIXED_RANDOM;
-    }ull operator()(ull x){
+    }ull operator()(ull x)const{
         return hash(x+rng());
-    }ull operator()(pair<ll,ll>&p){
+    }ull operator()(const pair<ll,ll>&p)const{
         return hash(hash((ull)p.first+rng())^hash((ull)p.second+rng())<<1);
     }
 };
