@@ -12,9 +12,7 @@ struct RollbackUnionFind{
             rep(i,2)h.emplace(-1,-1);
             return 0;
         }if(p[x]>p[y])swap(x,y);
-        h.emplace(x,p[x]);
-        h.emplace(y,p[y]);
-        p[x]+=p[y],p[y]=x;
+        h.emplace(x,p[x]),h.emplace(y,p[y]),p[x]+=p[y],p[y]=x;
         return 1;
     }void rollback(){
         auto[i2,v2]=h.top();h.pop();
@@ -28,7 +26,7 @@ struct RollbackUnionFind{
         return-p[find(x)];
     }int snapshot(){
         return h.size()>>1;
-    }int size()const{
+    }int size(){
         return p.size();
     }
 };

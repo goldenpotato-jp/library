@@ -1,7 +1,7 @@
 // GenBIT2D
 template<class G>
 struct GenBIT2D{
-    using T=typename G::T;
+    using T=class G::T;
     int h,w;
     vector<vector<T>>bit;
     GenBIT2D(int h_=0,int w_=0):h(h_+1),w(w_+1),bit(h,vector<T>(w,0)){}

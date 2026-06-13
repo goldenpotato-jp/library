@@ -14,7 +14,7 @@ struct UnionFind{
         return find(x)==find(y);
     }int size(int x){
         return-p[find(x)];
-    }int size()const{
+    }int size(){
         return p.size();
     }
 };
