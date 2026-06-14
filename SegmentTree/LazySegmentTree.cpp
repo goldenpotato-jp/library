@@ -1,8 +1,8 @@
 // LazySegmentTree
 template<class M>
 struct LazySegmentTree{
-    using S=class M::S;
-    using F=class M::F;
+    using S=typename M::S;
+    using F=typename M::F;
     int N,n=1;
     vector<S>seg;
     vector<F>lazy;

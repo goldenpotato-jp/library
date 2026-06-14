@@ -1,5 +1,5 @@
 // MinMonoid
-template<typename S=ll>
+template<class S=ll>
 struct MinMonoid{
     using T=S;
     static T e(){

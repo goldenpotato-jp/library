@@ -1,5 +1,5 @@
 // MaxMonoid
-template<typename S=ll>
+template<class S=ll>
 struct MaxMonoid{
     using T=S;
     static T e(){

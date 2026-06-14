@@ -1,7 +1,7 @@
 // SegmentTree
 template<class M>
 struct SegmentTree{
-    using T=class M::T;
+    using T=typename M::T;
     int N,n=1;
     vector<T>seg;
     SegmentTree(int n_=0):N(n_){

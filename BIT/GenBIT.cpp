@@ -1,7 +1,7 @@
 // GenBIT
 template<class G>
 struct GenBIT{
-    using T=class G::T;
+    using T=typename G::T;
     int n;
     vector<T>bit;
     GenBIT(int n_=0):n(n_+1),bit(n,G::e()){}

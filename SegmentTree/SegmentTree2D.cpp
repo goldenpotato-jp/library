@@ -1,7 +1,7 @@
 // SegmentTree2D
 template<class M>
 struct SegmentTree2D{
-    using T=class M::T;
+    using T=typename M::T;
     int H,W,h=1,w=1;
     vector<T>seg;
     int id(int i,int j){

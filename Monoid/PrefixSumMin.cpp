@@ -1,5 +1,5 @@
 // PrefixSumMin
-template<typename T=ll>
+template<class T=ll>
 struct PrefixSumMin{
     using T=pair<int,S>;
     static T e(){

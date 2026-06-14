@@ -1,5 +1,5 @@
 // XorGroup
-template<typename S=ll>
+template<class S=ll>
 struct XorGroup{
     using T=S;
     static T e(){

@@ -1,7 +1,7 @@
 // WeightedUnionFind
 template<class G>
 struct WeightedUnionFind{
-    using T=class G::T;
+    using T=typename G::T;
     vector<int>p;
     vector<T>d;
     WeightedUnionFind(int n):p(n,-1),d(n,G::e()){}
