@@ -56,8 +56,7 @@ struct SuffixArray{
                     if(l==s.size()||s[l]!=s[r])diff=1;
                 }else diff=1;
                 n2+=diff,s2[lms_map[sorted_lms[i+1]]]=n2;
-            }
-            auto sa2=sa_is(s2,n2);
+            }auto sa2=sa_is(s2,n2);
             rep(i,m)sorted_lms[i]=lms[sa2[i]];
             induce(sorted_lms);
         }return res;
