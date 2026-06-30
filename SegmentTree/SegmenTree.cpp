@@ -11,7 +11,7 @@ struct SegmentTree{
         while(n<N)n<<=1;
         seg.assign(n<<1,M::e());
         rep(i,N)seg[i+n]=v[i];
-        for(int i=n-1;i>0;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
+        for(int i=n-1;i;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }void set(int i,T x){
         seg[i+=n]=x;
         while(i>>=1)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);

@@ -13,7 +13,7 @@ struct LazySegmentTree{
         while(n<N)n<<=1;
         seg.assign(n<<1,M::e()),lazy.assign(n<<1,M::id());
         rep(i,N)seg[i+n]=v[i];
-        for(int i=n-1;i>0;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
+        for(int i=n-1;i;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }void apply(int i,F f){
         seg[i]=M::mapping(f,seg[i]);
         if(i<n)lazy[i]=M::composition(f,lazy[i]);
