@@ -11,6 +11,6 @@ struct RangeFlipInv{
     }static S mapping(F f,S x){
         return(f?S{get<1>(x),get<0>(x),(ll)get<0>(x)*get<1>(x)-get<2>(x)}:x);
     }static F composition(F f,F g){
-        return f^g;
+        return g^f;
     }
 };

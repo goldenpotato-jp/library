@@ -4,7 +4,7 @@ struct GenBIT{
     using T=typename G::T;
     int n;
     vector<T>bit;
-    GenBIT(int n_=0):n(n_+1),bit(n,G::e()){}
+    GenBIT(int N=0):n(N+1),bit(n,G::e()){}
     GenBIT(const vector<T>&v):n(v.size()+1),bit(n,G::e()){
         rep(i,n-1)add(i,v[i]);
     }void add(int i,T x){

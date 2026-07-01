@@ -4,7 +4,7 @@ struct SegmentTree{
     using T=typename M::T;
     int N,n=1;
     vector<T>seg;
-    SegmentTree(int n_=0):N(n_){
+    SegmentTree(int N=0):N(N){
         while(n<N)n<<=1;
         seg.assign(n<<1,M::e());
     }SegmentTree(const vector<T>&v):N(v.size()){

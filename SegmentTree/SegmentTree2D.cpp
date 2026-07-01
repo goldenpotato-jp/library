@@ -6,7 +6,7 @@ struct SegmentTree2D{
     vector<T>seg;
     int id(int i,int j){
         return (i*w<<1)+j;
-    }SegmentTree2D(int h_=0,int w_=0):H(h_),W(w_){
+    }SegmentTree2D(int H=0,int W=0):H(H),W(W){
         while(h<H)h<<=1;
         while(w<W)w<<=1;
         seg.assign(h*w<<2,M::e());

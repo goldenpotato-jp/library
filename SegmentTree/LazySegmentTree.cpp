@@ -6,7 +6,7 @@ struct LazySegmentTree{
     int N,n=1;
     vector<S>seg;
     vector<F>lazy;
-    LazySegmentTree(int n_=0):N(n_){
+    LazySegmentTree(int N=0):N(N){
         while(n<N)n<<=1;
         seg.assign(n<<1,M::e()),lazy.assign(n<<1,M::id());
     }LazySegmentTree(const vector<S>&v):N(v.size()){
@@ -18,8 +18,7 @@ struct LazySegmentTree{
         seg[i]=M::mapping(f,seg[i]);
         if(i<n)lazy[i]=M::composition(f,lazy[i]);
     }void push(int i){
-        if(lazy[i]==M::id())return;
-        apply(i<<1,lazy[i]),apply(i<<1|1,lazy[i]),lazy[i]=M::id();
+        if(lazy[i]!=M::id())apply(i<<1,lazy[i]),apply(i<<1|1,lazy[i]),lazy[i]=M::id();
     }void set(int l,int r,F f){
         set(l,r,f,1,0,n-1);
     }void set(int ql,int qr,F f,int i,int l,int r){
@@ -27,20 +26,17 @@ struct LazySegmentTree{
         if(ql<=l&&r<=qr){
             apply(i,f);
             return;
-        }push(i);
-        int mid=(l+r)>>1;
-        set(ql,qr,f,i<<1,l,mid),set(ql,qr,f,i<<1|1,mid+1,r),seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
+        }push(i),set(ql,qr,f,i<<1,l,(l+r)>>1),set(ql,qr,f,i<<1|1,((l+r)>>1)+1,r),seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }S get(int l,int r){
         return get(l,r,1,0,n-1);
     }S get(int ql,int qr,int i,int l,int r){
         if(r<ql||qr<l)return M::e();
         if(ql<=l&&r<=qr)return seg[i];
         push(i);
-        int mid=(l+r)>>1;
-        return M::op(get(ql,qr,i<<1,l,mid),get(ql,qr,i<<1|1,mid+1,r));
+        return M::op(get(ql,qr,i<<1,l,(l+r)>>1),get(ql,qr,i<<1|1,((l+r)>>1)+1,r));
     }S operator[](int i){
         return get(i,i);
-    }int size()const{
+    }int size(){
         return N;
     }
 };

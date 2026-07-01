@@ -4,7 +4,7 @@ struct GenBIT2D{
     using T=typename G::T;
     int h,w;
     vector<vector<T>>bit;
-    GenBIT2D(int h_=0,int w_=0):h(h_+1),w(w_+1),bit(h,vector<T>(w,0)){}
+    GenBIT2D(int H=0,int W=0):h(H+1),w(W+1),bit(h,vector<T>(w,0)){}
     GenBIT2D(const vector<vector<T>>&v):h(v.size()+1),w(v[0].size()+1),bit(h,vector<T>(w,0)){
         rep(i,h-1)rep(j,w-1)add(i,j,v[i][j]);
     }void add(int i,int j,T x){

@@ -2,7 +2,7 @@
 struct BIT{
     int n;
     vector<ll>bit;
-    BIT(int n_=0):n(n_+1),bit(n,0){}
+    BIT(int N=0):n(N+1),bit(n,0){}
     BIT(const vector<ll>&v):n(v.size()+1),bit(n,0){
         rep(i,n-1)add(i,v[i]);
     }void add(int i,ll x){

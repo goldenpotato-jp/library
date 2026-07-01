@@ -2,7 +2,7 @@
 struct BIT_RAQ{
     int n;
     vector<ll>bit[2];
-    BIT_RAQ(int n_=0):n(n_+1){
+    BIT_RAQ(int N=0):n(N+1){
         rep(i,2)bit[i].assign(n,0);
     }BIT_RAQ(const vector<ll>&v):n(v.size()+1){
         rep(i,2)bit[i].assign(n,0);
