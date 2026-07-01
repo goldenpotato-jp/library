@@ -1,39 +1,39 @@
-// BipartiteMatching
-struct BipartiteMatching{
-    struct Data{
-        int a,b;
-    };
+// BipMatch
+struct BipMatch{
     int L,R;
-    vector<int>level,iter,ml,mr;
+    vector<int>d,ml,mr;
     vector<vector<int>>g;
-    vector<Data>edges;
-    BipartiteMatching(int L,int R):L(L),R(R),g(L),level(L),iter(L),ml(L,-1),mr(R,-1){}
-    int add_edge(int l,int r){
-        g[l].emplace_back(r),edges.emplace_back(l,g[l].size()-1);
-        return edges.size()-1;
+    BipMatch(int L,int R):L(L),R(R),g(L),d(L),ml(L,-1),mr(R,-1){}
+    void add_edge(int l,int r){
+        g[l].emplace_back(r);
+    }bool bfs(){
+        queue<int>q;
+        bool res=0;
+        rep(i,L){
+            if(ml[i]==-1)d[i]=0,q.emplace(i);
+            else d[i]=inf;
+        }while(q.size()){
+            int v=q.front();q.pop();
+            for(auto v2:g[v]){
+                int v3=mr[v2];
+                if(v3==-1)res=1;
+                else if(d[v3]==inf)d[v3]=d[v]+1,q.push(v3);
+            }
+        }return res;
     }bool dfs(int v){
-        for(int&i=iter[v];i<g[v].size();++i)if(mr[g[v][i]]<0||level[mr[g[v][i]]]==level[v]+1&&dfs(mr[g[v][i]])){
-            ml[v]=g[v][i],mr[g[v][i]]=v;
-            return 1;
-        }return 0;
-    }int max_flow(){
-        rep(u,L)for(auto v:g[u])if(mr[v]<0){
-            ml[u]=v,mr[v]=u;
-            break;
-        }queue<int>q;
-        while(1){
-            fill(all(level),-1),fill(all(iter),0);
-            rep(i,L)if(ml[i]<0)level[i]=0,q.push(i);
-            while(q.size()){
-                int u=q.front();q.pop();
-                for(auto e:g[u])if(mr[e]>=0&&level[mr[e]]<0)level[mr[e]]=level[u]+1,q.emplace(mr[e]);
-            }bool updated=0;
-            rep(i,L)updated|=ml[i]<0&&dfs(i);
-            if(!updated)break;
-        }int res=0;
-        rep(i,L)res+=ml[i]>=0;
+        for(auto v2:g[v]){
+            int v3=mr[v2];
+            if(v3==-1||d[v3]==d[v]+1&&dfs(v3)){
+                ml[v]=v2,mr[v2]=v;
+                return 1;
+            }
+        }d[v]=inf;
+        return 0;
+    }int max_match(){
+        int res=0;
+        while(bfs())rep(i,L)if(ml[i]==-1&&dfs(i))++res;
         return res;
-    }bool get_flow(int id){
-        return ml[edges[id].a]==g[edges[id].a][edges[id].b];
+    }bool get_match(int u,int v){
+        return ml[u]==v;
     }
 };
