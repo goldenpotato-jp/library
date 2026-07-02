@@ -10,5 +10,7 @@ struct Hash{
         return hash(x+rng());
     }ull operator()(const pair<ll,ll>&p)const{
         return hash(hash((ull)p.first+rng())^hash((ull)p.second+rng())<<1);
+    }ull operator()(const tuple<ll,ll,ll>&p)const{
+        return hash(hash((ull)get<0>(p)+rng())^(hash((ull)get<1>(p)+rng())<<1)^(hash((ull)get<2>(p)+rng())<<2));
     }
 };
