@@ -1,7 +1,6 @@
 // MinMonoid
-template<class S=ll>
 struct MinMonoid{
-    using T=S;
+    using T=ll;
     static T e(){
         return INF;
     }static T op(T a,T b){

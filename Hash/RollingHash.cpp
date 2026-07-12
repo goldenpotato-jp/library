@@ -23,6 +23,10 @@ struct RollingHash{
     }RollingHash(const string&s):hash(s.size()+1){
         expand(s.size());
         rep(i,s.size())hash[i+1]=add(mul(hash[i],base()),s[i]);
+    }template<class T>
+    RollingHash(const vector<T>&v):hash(v.size()+1){
+        expand(v.size());
+        rep(i,v.size())hash[i+1]=add(mul(hash[i],base()),v[i]);
     }ull get(int l,int r){
         return sub(hash[r+1],mul(hash[l],pow[r-l+1]));
     }int lcp(int a,int b){

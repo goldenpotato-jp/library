@@ -1,7 +1,6 @@
 // XorGroup
-template<class S=ll>
 struct XorGroup{
-    using T=S;
+    using T=ll;
     static T e(){
         return 0;
     }static T op(T a,T b){
