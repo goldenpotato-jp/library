@@ -22,5 +22,7 @@ struct ZAlgorithm{
                 z[i]=r-i,l=i;
             }else z[i]=z[i-l];
         }
+    }int size(){
+        return z.size();
     }
 };
