@@ -1,5 +1,5 @@
-// ZAlgorithm
-struct ZAlgorithm{
+// LCPArray
+struct LCPArray{
     vector<int>z;
     ZAlgorithm(const string&s):z(s.size()){
         z[0]=s.size();
@@ -22,6 +22,8 @@ struct ZAlgorithm{
                 z[i]=r-i,l=i;
             }else z[i]=z[i-l];
         }
+    }int operator[](int i){
+        return z[i];
     }int size(){
         return z.size();
     }
