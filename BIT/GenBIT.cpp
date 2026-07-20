@@ -17,7 +17,5 @@ struct GenBIT{
         return G::op(sum(r),G::inv(sum(l-1)));
     }T operator[](int i){
         return G::op(sum(i),G::inv(sum(i-1)));
-    }int size(){
-        return n-1;
     }
 };

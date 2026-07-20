@@ -24,7 +24,5 @@ struct BIT_RAQ{
         return sum(r)-sum(l-1);
     }ll operator[](int i){
         return sum(i)-sum(i-1);
-    }int size(){
-        return n-1;
     }
 };

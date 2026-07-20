@@ -20,7 +20,5 @@ struct BIT{
         return x;
     }ll operator[](int i){
         return sum(i)-sum(i-1);
-    }int size(){
-        return n-1;
     }
 };

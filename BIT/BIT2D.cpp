@@ -15,9 +15,5 @@ struct BIT2D{
         return sum(i2,j2)-sum(i2,j1-1)-sum(i1-1,j2)+sum(i1-1,j1-1);
     }ll get(int i,int j){
         return query(i,j,i,j);
-    }int size_h(){
-        return h-1;
-    }int size_w(){
-        return w-1;
     }
 };

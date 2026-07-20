@@ -47,7 +47,5 @@ struct SegmentTree{
         return 0;
     }T operator[](int i){
         return seg[i+n];
-    }int size(){
-        return N;
     }
 };

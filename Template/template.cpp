@@ -12,8 +12,8 @@ using ld=long double;
 #define mine(a)*ranges::min_element(a)
 #define maxe(a)*ranges::max_element(a)
 #define sume(a)accumulate(all(a),0LL)
-template<typename T>bool chmin(T&a,T b){if(a>b){a=b;return 1;}return 0;}
-template<typename T>bool chmax(T&a,T b){if(a<b){a=b;return 1;}return 0;}
+template<class T>bool chmin(T&a,T b){if(a>b){a=b;return 1;}return 0;}
+template<class T>bool chmax(T&a,T b){if(a<b){a=b;return 1;}return 0;}
 constexpr int inf=2e9,dx4[4]={0,-1,0,1},dy4[4]={1,0,-1,0},dx8[8]={0,-1,-1,-1,0,1,1,1},dy8[8]={1,1,0,-1,-1,-1,0,1};
 constexpr ll INF=2e18;
 

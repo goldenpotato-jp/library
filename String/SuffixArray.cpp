@@ -60,7 +60,5 @@ struct SuffixArray{
         return sa;
     }int operator[](int i){
         return sa[i];
-    }int size(){
-        return sa.size();
     }
 };

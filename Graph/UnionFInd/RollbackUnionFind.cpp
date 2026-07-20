@@ -26,7 +26,5 @@ struct RollbackUnionFind{
         return-p[find(x)];
     }int snapshot(){
         return h.size()>>1;
-    }int size(){
-        return p.size();
     }
 };

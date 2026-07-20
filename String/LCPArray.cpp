@@ -1,7 +1,7 @@
 // LCPArray
 struct LCPArray{
     vector<int>z;
-    ZAlgorithm(const string&s):z(s.size()){
+    LCPArray(const string&s):z(s.size()){
         z[0]=s.size();
         int l=0,r=0;
         for(int i=1;i<s.size();++i){
@@ -12,7 +12,7 @@ struct LCPArray{
             }else z[i]=z[i-l];
         }
     }template<class T>
-    ZAlgorithm(const vector<T>&v):z(v.size()){
+    LCPArray(const vector<T>&v):z(v.size()){
         z[0]=v.size();
         int l=0,r=0;
         for(int i=1;i<v.size();++i){
@@ -24,7 +24,5 @@ struct LCPArray{
         }
     }int operator[](int i){
         return z[i];
-    }int size(){
-        return z.size();
     }
 };

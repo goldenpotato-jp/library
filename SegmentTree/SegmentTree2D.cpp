@@ -2,19 +2,19 @@
 template<class M>
 struct SegmentTree2D{
     using T=typename M::T;
-    int H,W,h=1,w=1;
+    int h=1,w=1;
     vector<T>seg;
     int id(int i,int j){
-        return (i*w<<1)+j;
-    }SegmentTree2D(int H=0,int W=0):H(H),W(W){
+        return(i*w<<1)+j;
+    }SegmentTree2D(int H=0,int W=0){
         while(h<H)h<<=1;
         while(w<W)w<<=1;
         seg.assign(h*w<<2,M::e());
-    }SegmentTree2D(const vector<vector<T>>&v):H(v.size()),W(v[0].size()){
-        while(h<H)h<<=1;
-        while(w<W)w<<=1;
+    }SegmentTree2D(const vector<vector<T>>&v){
+        while(h<v.size())h<<=1;
+        while(w<v[0].size())w<<=1;
         seg.assign(h*w<<2,M::e());
-        rep(i,H)rep(j,W)seg[id(i+h,j+w)]=v[i][j];
+        rep(i,v.size())rep(j,v[0].size())seg[id(i+h,j+w)]=v[i][j];
         build();
     }void build(){
         for(int i=w;i<w<<1;++i)for(int j=h-1;j;--j)seg[id(j,i)]=M::op(seg[id(j<<1,i)],seg[id(j<<1|1,i)]);
@@ -38,9 +38,5 @@ struct SegmentTree2D{
         }return res;
     }T operator()(int i,int j){
         return seg[id(i+h,j+w)];
-    }int size_h(){
-        return H;
-    }int size_w(){
-        return W;
     }
 };

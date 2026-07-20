@@ -26,7 +26,5 @@ struct WeightedUnionFind{
         return-p[find(x)];
     }T diff(int x,int y){
         return G::op(weight(y),G::inv(weight(x)));
-    }int size(){
-        return p.size();
     }
 };
