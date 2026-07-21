@@ -10,16 +10,16 @@ struct BipMatch{
     }bool bfs(){
         bool res=0;
         rep(i,L){
-            if(ml[i]<0)d[i]=0,q.emplace(i);
+            if(ml[i]==-1)d[i]=0,q.emplace(i);
             else d[i]=inf;
         }while(q.size()){
             for(auto v2:g[q.front()]){
-                if(mr[v2]<0)res=1;
+                if(mr[v2]==-1)res=1;
                 else if(d[mr[v2]]==inf)d[mr[v2]]=d[q.front()]+1,q.push(mr[v2]);
             }q.pop();
         }return res;
     }bool dfs(int v){
-        for(auto v2:g[v])if(mr[v2]<0||d[mr[v2]]==d[v]+1&&dfs(mr[v2])){
+        for(auto v2:g[v])if(mr[v2]==-1||d[mr[v2]]==d[v]+1&&dfs(mr[v2])){
             ml[v]=v2,mr[v2]=v;
             return 1;
         }d[v]=-1;
