@@ -2,8 +2,7 @@
 ld EPS=1e-12;
 int sgn(ld a){
     return a<-EPS?-1:(a>EPS?1:0);
-}
-struct Point{
+}struct Point{
     ld x,y;
     Point(ld x=0,ld y=0):x(x),y(y){}
     Point operator-(){

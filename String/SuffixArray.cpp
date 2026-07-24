@@ -23,7 +23,6 @@ struct SuffixArray{
         for(int i=s.size()-2;i+1;--i)ls[i]=s[i]==s[i+1]?ls[i+1]:s[i]<s[i+1];
         rep(i,s.size())++(ls[i]?sl[s[i]+1]:ss[s[i]]);
         rep(i,n)ss[i]+=sl[i],sl[i+1]+=ss[i];
-        ss[n]+=sl[n];
         auto induce=[&](const vector<int>&lms){
             vector<int>buf;
             fill(all(res),-1),buf=ss;
@@ -32,10 +31,9 @@ struct SuffixArray{
             rep(i,s.size())if(res[i]>0&&!ls[res[i]-1])res[buf[s[res[i]-1]]++]=res[i]-1;
             buf=sl;
             for(int i=s.size()-1;i+1;--i)if(res[i]>0&&ls[res[i]-1])res[--buf[s[res[i]-1]+1]]=res[i]-1;
-        };
-        int m=0;
+        };int m=0;
         rep(i,s.size()-1)if(!ls[i]&&ls[i+1])lms_map[i+1]=m++;
-        lms.reserve(m);
+        ss[n]+=sl[n],lms.reserve(m);
         rep(i,s.size()-1)if(!ls[i]&&ls[i+1])lms.emplace_back(i+1);
         induce(lms);
         if(m){
@@ -56,8 +54,6 @@ struct SuffixArray{
             rep(i,m)sorted_lms[i]=lms[sa2[i]];
             induce(sorted_lms);
         }return res;
-    }vector<int>get(){
-        return sa;
     }int operator[](int i){
         return sa[i];
     }
