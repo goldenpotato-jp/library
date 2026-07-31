@@ -15,8 +15,8 @@ struct LazySegmentTree{
         rep(i,v.size())seg[i+n]=v[i];
         for(int i=n-1;i;--i)seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }void apply(int i,F f){
-        seg[i]=M::mapping(f,seg[i]);
-        if(i<n)lazy[i]=M::composition(f,lazy[i]);
+        seg[i]=M::map(f,seg[i]);
+        if(i<n)lazy[i]=M::com(f,lazy[i]);
     }void push(int i){
         if(lazy[i]!=M::id())apply(i<<1,lazy[i]),apply(i<<1|1,lazy[i]),lazy[i]=M::id();
     }void set(int l,int r,F f){
