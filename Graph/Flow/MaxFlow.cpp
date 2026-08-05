@@ -2,12 +2,10 @@
 struct MaxFlow{
     struct EdgePos{
         int from,index;
-    };
-    struct Edge{
+    };struct Edge{
         int to,rev;
         ll cap;
-    };
-    vector<int>level,iter;
+    };vector<int>level,iter;
     vector<EdgePos>edges;
     vector<vector<Edge>>g;
     queue<int>q;
