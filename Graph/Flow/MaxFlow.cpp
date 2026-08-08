@@ -9,7 +9,7 @@ struct MaxFlow{
     vector<EdgePos>edges;
     vector<vector<Edge>>g;
     queue<int>q;
-    MaxFlow(int n):g(n),level(n),iter(n){}
+    MaxFlow(int N):g(N),level(N),iter(N){}
     void add_edge(int from,int to,ll cap){
         g[from].emplace_back(to,g[to].size(),cap),g[to].emplace_back(from,g[from].size()-1,0),edges.emplace_back(from,g[from].size()-1);
     }bool bfs(int s,int t){

@@ -5,7 +5,7 @@ struct TwoSAT{
     vector<bool>on_stack;
     vector<int>id,lowlink,cmp,stack,res;
     vector<vector<int>>g;
-    TwoSAT(int n):n(n),n2(n<<1),on_stack(n2),id(n2,-1),lowlink(n2,-1),cmp(n2,-1),res(n2),g(n2){
+    TwoSAT(int N):n(N),n2(n<<1),on_stack(n2),id(n2,-1),lowlink(n2,-1),cmp(n2,-1),res(n2),g(n2){
         stack.reserve(n2);
     }void add_edge(int from,int to){
         g[from].emplace_back(to);

@@ -4,7 +4,7 @@ struct WeightedUnionFind{
     using T=typename G::T;
     vector<int>p;
     vector<T>d;
-    WeightedUnionFind(int n):p(n,-1),d(n,G::e()){}
+    WeightedUnionFind(int N):p(N,-1),d(N,G::e()){}
     int find(int x){
         if(p[x]<0)return x;
         int r=find(p[x]);

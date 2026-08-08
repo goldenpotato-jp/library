@@ -2,7 +2,7 @@
 struct RollbackUnionFind{
     vector<int>p;
     stack<pair<int,int>>h;
-    RollbackUnionFind(int n):p(n,-1){}
+    RollbackUnionFind(int N):p(N,-1){}
     int find(int x){
         while(p[x]>=0)x=p[x];
         return x;

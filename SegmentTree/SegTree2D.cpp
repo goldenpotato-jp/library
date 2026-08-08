@@ -1,16 +1,16 @@
-// SegmentTree2D
+// SegTree2D
 template<class M>
-struct SegmentTree2D{
+struct SegTree2D{
     using T=typename M::T;
     int h=1,w=1;
     vector<T>seg;
     int id(int i,int j){
         return(i*w<<1)+j;
-    }SegmentTree2D(int H=0,int W=0){
+    }SegTree2D(int H=0,int W=0){
         while(h<H)h<<=1;
         while(w<W)w<<=1;
         seg.assign(h*w<<2,M::e());
-    }SegmentTree2D(const vector<vector<T>>&v){
+    }SegTree2D(const vector<vector<T>>&v){
         while(h<v.size())h<<=1;
         while(w<v[0].size())w<<=1;
         seg.assign(h*w<<2,M::e());

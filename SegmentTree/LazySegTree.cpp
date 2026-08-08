@@ -1,15 +1,15 @@
-// LazySegmentTree
+// LazySegTree
 template<class M>
-struct LazySegmentTree{
+struct LazySegTree{
     using S=typename M::S;
     using F=typename M::F;
     int n=1;
     vector<S>seg;
     vector<F>lazy;
-    LazySegmentTree(int N=0){
+    LazySegTree(int N=0){
         while(n<N)n<<=1;
         seg.assign(n<<1,M::e()),lazy.assign(n<<1,M::id());
-    }LazySegmentTree(const vector<S>&v){
+    }LazySegTree(const vector<S>&v){
         while(n<v.size())n<<=1;
         seg.assign(n<<1,M::e()),lazy.assign(n<<1,M::id());
         rep(i,v.size())seg[i+n]=v[i];

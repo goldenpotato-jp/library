@@ -1,5 +1,5 @@
-// GetPrime
-vector<ll>GetPrime(int n){
+// get_prime
+vector<ll>get_prime(int n){
     vector<bool>v(n+1);
     vector<ll>res;
     for(int i=2;i<=n;++i)if(!v[i]){

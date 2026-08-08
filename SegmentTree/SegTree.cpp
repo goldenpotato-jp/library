@@ -1,13 +1,13 @@
-// SegmentTree
+// SegTree
 template<class M>
-struct SegmentTree{
+struct SegTree{
     using T=typename M::T;
     int N,n=1;
     vector<T>seg;
-    SegmentTree(int N=0):N(N){
+    SegTree(int N=0):N(N){
         while(n<N)n<<=1;
         seg.assign(n<<1,M::e());
-    }SegmentTree(const vector<T>&v):N(v.size()){
+    }SegTree(const vector<T>&v):N(v.size()){
         while(n<N)n<<=1;
         seg.assign(n<<1,M::e());
         rep(i,N)seg[i+n]=v[i];

@@ -4,7 +4,7 @@ struct SCC{
     vector<bool>on_stack;
     vector<int>id,lowlink,cmp,stack;
     vector<vector<int>>g,scc;
-    SCC(int n):n(n),g(n),id(n,-1),lowlink(n,-1),cmp(n,-1),on_stack(n){
+    SCC(int N):n(N),g(n),id(n,-1),lowlink(n,-1),cmp(n,-1),on_stack(n){
         stack.reserve(n);
     }void add_edge(int from,int to){
         g[from].emplace_back(to);

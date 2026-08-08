@@ -13,8 +13,7 @@ struct Mo{
             if(ablock!=bblock)return ablock<bblock;
             if(ablock&1)return right[a]<right[b];
             return right[a]>right[b];
-        });
-        int nl=0,nr=0;
+        });int nl=0,nr=0;
         for(auto idx:order){
             while(nl>left[idx])add_left(--nl);
             while(nr<right[idx])add_right(nr++);
