@@ -4,60 +4,59 @@ struct PersistentSegTree{
     using T=typename M::T;
     struct Node{
         T data;
-        Node*l,*r;
-        Node(){}
-        Node(const T&data):data(data),l(nullptr),r(nullptr){}
-    };Node*pool=new Node[NODES],*nil;
-    int pid=0,N;
-    vector<Node*>roots;
+        int l,r;
+        Node():data(M::e()),l(0),r(0){}
+        Node(const T&data,int l,int r):data(data),l(l),r(r){}
+    };Node*pool=new Node[NODES];
+    int pid=1,N;
+    vector<int>roots;
     PersistentSegTree(int N):N(N){
-        nil=my_new(M::e()),nil->l=nil->r=nil,roots.reserve(262144),roots.emplace_back(nil);
+        pool[0]=Node(),roots.reserve(262144),roots.emplace_back(0);
     }PersistentSegTree(const vector<T>&v):N(v.size()){
-        nil=my_new(M::e()),nil->l=nil->r=nil,roots.reserve(262144),roots.emplace_back(build(0,v.size(),v));
-    }Node*my_new(const T&data){
-        pool[pid].data=data,pool[pid].l=pool[pid].r=nil;
-        return&pool[pid++];
-    }Node*merge(Node*l,Node*r){
-        pool[pid].data=M::op(l->data,r->data),pool[pid].l=l,pool[pid].r=r;
-        return&pool[pid++];
-    }Node*build(int l,int r,const vector<T>&v){
+        pool[0]=Node(),roots.reserve(262144),roots.emplace_back(build(0,v.size(),v));
+    }int my_new(const T&data,int l=0,int r=0){
+        pool[pid]={data,l,r};
+        return pid++;
+    }int merge(int l,int r){
+        return my_new(M::op(pool[l].data,pool[r].data),l,r);
+    }int build(int l,int r,const vector<T>&v){
         if(l+1==r)return my_new(v[l]);
         int m=(l+r)>>1;
         return merge(build(l,m,v),build(m,r,v));
-    }Node*update(int i,const T&x,Node*n,int l,int r){
+    }int update(int i,const T&x,int n,int l,int r){
         if(l+1==r)return my_new(x);
         int m=(l+r)>>1;
-        if(i<m)return merge(update(i,x,n->l,l,m),n->r);
-        return merge(n->l,update(i,x,n->r,m,r));
-    }Node*update(Node*n,int i,const T&x){
+        if(i<m)return merge(update(i,x,pool[n].l,l,m),pool[n].r);
+        return merge(pool[n].l,update(i,x,pool[n].r,m,r));
+    }int update(int n,int i,const T&x){
         return roots.emplace_back(update(i,x,n,0,N));
-    }Node*update(int t,int i,const T&x){
+    }int update_t(int t,int i,const T&x){
         return roots.emplace_back(update(i,x,roots[t],0,N));;
-    }Node*update(int i,const T&x){
+    }int update(int i,const T&x){
         return roots.emplace_back(update(i,x,roots.back(),0,N));
-    }Node*add(int i,const T&x,Node*n,int l,int r){
-        if(l+1==r)return my_new(M::op(x,n->data));
+    }int add(int i,const T&x,int n,int l,int r){
+        if(l+1==r)return my_new(M::op(x,pool[n].data));
         int m=(l+r)>>1;
-        if(i<m)return merge(add(i,x,n->l,l,m),n->r);
-        return merge(n->l,add(i,x,n->r,m,r));
-    }Node*add(Node*n,int i,const T&x){
+        if(i<m)return merge(add(i,x,pool[n].l,l,m),pool[n].r);
+        return merge(pool[n].l,add(i,x,pool[n].r,m,r));
+    }int add(int n,int i,const T&x){
         return roots.emplace_back(add(i,x,n,0,N));
-    }Node*add(int t,int i,const T&x){
+    }int add_t(int t,int i,const T&x){
         return roots.emplace_back(add(i,x,roots[t],0,N));
-    }Node*add(int i,const T&x){
+    }int add(int i,const T&x){
         return roots.emplace_back(add(i,x,roots.back(),0,N));
-    }T query(int a,int b,Node*n,int l,int r){
-        if(n==nil||r<=a||b<=l)return M::e();
-        if(a<=l&&r<=b)return n->data;
+    }T get(int a,int b,int n,int l,int r){
+        if(n==0||r<=a||b<=l)return M::e();
+        if(a<=l&&r<=b)return pool[n].data;
         int m=(l+r)>>1;
-        return M::op(query(a,b,n->l,l,m),query(a,b,n->r,m,r));
-    }T query(Node*n,int a,int b){
-        return query(a,b,n,0,N);
-    }T query(int t,int a,int b){
-        return query(a,b,roots[t],0,N);
-    }T query(int a,int b){
-        return query(a,b,roots.back(),0,N);
-    }Node*new_tree(){
-        return nil;
+        return M::op(get(a,b,pool[n].l,l,m),get(a,b,pool[n].r,m,r));
+    }T get(int n,int a,int b){
+        return get(a,b+1,n,0,N);
+    }T get_t(int t,int a,int b){
+        return get(a,b+1,roots[t],0,N);
+    }T get(int a,int b){
+        return get(a,b+1,roots.back(),0,N);
+    }int new_tree(){
+        return 0;
     }
 };
