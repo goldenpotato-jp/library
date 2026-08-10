@@ -56,6 +56,8 @@ struct PersistentSegTree{
         return get(a,b+1,roots[t],0,N);
     }T get(int a,int b){
         return get(a,b+1,roots.back(),0,N);
+    }int ver(){
+        return roots.size()-1;
     }int new_tree(){
         return 0;
     }
