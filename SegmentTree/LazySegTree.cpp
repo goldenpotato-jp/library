@@ -20,20 +20,22 @@ struct LazySegTree{
     }void push(int i){
         if(lazy[i]!=M::id())apply(i<<1,lazy[i]),apply(i<<1|1,lazy[i]),lazy[i]=M::id();
     }void set(int l,int r,F f){
-        set(l,r,f,1,0,n-1);
+        set(l,r+1,f,1,0,n);
     }void set(int ql,int qr,F f,int i,int l,int r){
-        if(r<ql||qr<l)return;
+        if(r<=ql||qr<=l)return;
         if(ql<=l&&r<=qr){
             apply(i,f);
             return;
-        }push(i),set(ql,qr,f,i<<1,l,(l+r)>>1),set(ql,qr,f,i<<1|1,((l+r)>>1)+1,r),seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
+        }int m=(l+r)>>1;
+        push(i),set(ql,qr,f,i<<1,l,m),set(ql,qr,f,i<<1|1,m,r),seg[i]=M::op(seg[i<<1],seg[i<<1|1]);
     }S get(int l,int r){
-        return get(l,r,1,0,n-1);
+        return get(l,r+1,1,0,n);
     }S get(int ql,int qr,int i,int l,int r){
-        if(r<ql||qr<l)return M::e();
+        if(r<=ql||qr<=l)return M::e();
         if(ql<=l&&r<=qr)return seg[i];
         push(i);
-        return M::op(get(ql,qr,i<<1,l,(l+r)>>1),get(ql,qr,i<<1|1,((l+r)>>1)+1,r));
+        int m=(l+r)>>1;
+        return M::op(get(ql,qr,i<<1,l,m),get(ql,qr,i<<1|1,m,r));
     }S operator[](int i){
         return get(i,i);
     }
