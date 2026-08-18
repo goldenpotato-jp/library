@@ -1,6 +1,5 @@
 // PersistentSegTree
-template<class M,int NODES=2000000>
-struct PersistentSegTree{
+template<class M,int NODES=2000000>struct PersistentSegTree{
     using T=typename M::T;
     struct Node{
         T data;

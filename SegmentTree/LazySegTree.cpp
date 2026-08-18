@@ -1,6 +1,5 @@
 // LazySegTree
-template<class M>
-struct LazySegTree{
+template<class M>struct LazySegTree{
     using S=typename M::S;
     using F=typename M::F;
     int n=1;

@@ -8,6 +8,6 @@ struct PrimeCombination{
         for(int i=2;i<=N;++i)inv[i]=mod-mod/i*inv[mod%i]%mod;
         rep(i,N)fact_inv[i+1]=fact_inv[i]*inv[i+1]%mod;
     }ll operator()(int n,int r){
-        return n<r|n<0|r<0?0:fact[n]*fact_inv[r]%mod*fact_inv[n-r]%mod;
+        return n<r||n<0||r<0?0:fact[n]*fact_inv[r]%mod*fact_inv[n-r]%mod;
     }
 };

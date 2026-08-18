@@ -21,8 +21,7 @@ struct SegTree{
             if(l&1)L=M::op(L,seg[l++]);
             if(r&1)R=M::op(seg[--r],R);
         }return M::op(L,R);
-    }template<class F>
-    int max_right(int l,F f){
+    }template<class F>int max_right(int l,F f){
         l+=n;
         T sum=M::e();
         do{
@@ -33,8 +32,7 @@ struct SegTree{
             }sum=M::op(sum,seg[l++]);
         }while((l&-l)!=l);
         return N-1;
-    }template<class F>
-    int min_left(int r,F f){
+    }template<class F>int min_left(int r,F f){
         r+=n;
         T sum=M::e();
         do{

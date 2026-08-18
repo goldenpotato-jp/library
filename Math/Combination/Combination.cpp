@@ -8,6 +8,6 @@ struct Combination{
             dp[i][j+1]=val<mod?val:val-mod;
         }
     }ll operator()(int n,int r){
-        return n<0|r<0?0:dp[n][r];
+        return n<0||r<0?0:dp[n][r];
     }
 };
