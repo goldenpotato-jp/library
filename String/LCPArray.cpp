@@ -1,11 +1,11 @@
 // LCPArray
-struct LCPArray{
+template<class T=int>struct LCPArray{
     int n;
     vector<int>v,sa,isa,lcpa;
     LCPArray(const string&s,const vector<int>&sa):n(s.size()),v(n),sa(sa),isa(n+1),lcpa(n){
         rep(i,n)v[i]=s[i];
         build();
-    }template<class T>LCPArray(const vector<T>&v,const vector<int>&sa):n(v.size()),v(v),sa(sa),isa(n+1),lcpa(n){
+    }LCPArray(const vector<T>&v,const vector<int>&sa):n(v.size()),v(v),sa(sa),isa(n+1),lcpa(n){
         build();
     }void build(){
         rep(i,n+1)isa[sa[i]]=i;

@@ -1,6 +1,5 @@
 // SegTree
-template<class M>
-struct SegTree{
+template<class M>struct SegTree{
     using T=typename M::T;
     int N,n=1;
     vector<T>seg;

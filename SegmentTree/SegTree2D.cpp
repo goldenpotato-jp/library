@@ -1,6 +1,5 @@
 // SegTree2D
-template<class M>
-struct SegTree2D{
+template<class M>struct SegTree2D{
     using T=typename M::T;
     int h=1,w=1;
     vector<T>seg;

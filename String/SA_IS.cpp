@@ -6,12 +6,17 @@ struct SA_IS{
         vector<int>v(n+1);
         rep(i,n)v[i]=s[i]+1;
         sa=sa_is(v,257);
-    }template<class T>SA_IS(const vector<T>&s){
-        int n=s.size(),k=1;
-        vector<int>idx(n),v(n+1);
-        iota(all(idx),0),sort(all(idx),[&](int l,int r){return s[l]<s[r];});
-        rep(i,n)k+=i>0&&s[idx[i-1]]!=s[idx[i]],v[idx[i]]=k;
-        sa=sa_is(v,k+1);
+    }template<class T>SA_IS(const vector<T>&v){
+        int n=v.size(),k=1;
+        vector<int>idx(n),nv(n+1);
+        iota(all(idx),0),sort(all(idx),[&](int l,int r){return v[l]<v[r];});
+        rep(i,n)k+=i>0&&v[idx[i-1]]!=v[idx[i]],nv[idx[i]]=k;
+        sa=sa_is(nv,k+1);
+    }template<class T>SA_IS(const vector<T>&v,int upper){
+        int n=v.size();
+        vector<int>nv(n+1);
+        rep(i,n)nv[i]=v[i]+1;
+        sa=sa_is(nv,upper+1);
     }vector<int>sa_is(const vector<int>&v,int upper){
         int n=v.size(),m=0;
         if(n==0)return{};
