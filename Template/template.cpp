@@ -9,7 +9,7 @@ using ld=long double;
 #define YN(ans)cout<<(ans?"Yes\n":"No\n")
 #define uni(a)sort(all(a)),a.erase(unique(all(a)),a.end())
 #define pv(a)cerr<<#a<<':';for(auto e:a)cerr<<' '<<e;cerr<<'\n'
-#define pvv(a)cerr<<#a<<':';for(auto e:a){cerr<<'\n';for(auto e2:e)cerr<<' '<<e2;}
+#define pvv(a)cerr<<#a<<':';for(auto e:a){cerr<<'\n';for(auto e2:e)cerr<<' '<<e2;}cerr<<'\n'
 #define mine(a)*ranges::min_element(a)
 #define maxe(a)*ranges::max_element(a)
 #define sume(a)accumulate(all(a),0LL)
