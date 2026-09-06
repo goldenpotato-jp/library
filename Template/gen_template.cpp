@@ -26,8 +26,6 @@ ll randll(ll l,ll r){
 }
 
 int main(){
-    cin.tie(0)->sync_with_stdio(0);
-    cout<<fixed<<setprecision(0);
-    srand(time(0));
+    cin.tie(0)->sync_with_stdio(0),cout<<fixed<<setprecision(0),srand(time(0));
     
 }

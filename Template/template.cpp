@@ -19,7 +19,6 @@ constexpr int inf=2e9,dx4[4]={0,-1,0,1},dy4[4]={1,0,-1,0},dx8[8]={0,-1,-1,-1,0,1
 constexpr ll INF=2e18;
 
 int main(){
-    cin.tie(0)->sync_with_stdio(0);
-    cout<<fixed<<setprecision(0);
+    cin.tie(0)->sync_with_stdio(0),cout<<fixed<<setprecision(0);
     
 }
