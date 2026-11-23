@@ -1,5 +1,5 @@
 // https://github.com/goldenpotato-jp/library
-#include"bits/stdc++.h"
+#include<bits/stdc++.h>
 using namespace std;
 using ll=long long;
 using ull=unsigned long long;
